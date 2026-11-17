@@ -1,0 +1,14 @@
+
+{
+  "name": "om-jin-intelligence-ai-pro",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Workspace dokumentasi dan analisis informasi terbuka",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

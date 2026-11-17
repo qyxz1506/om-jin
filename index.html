@@ -1,0 +1,285 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080d18">
+  <meta name="description" content="OM JIN Intelligence AI Pro - Dashboard analisis dan pengelolaan laporan.">
+  <title>OM JIN INTELLIGENCE AI PRO</title>
+  <link rel="stylesheet" href="public/css/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-logo">OJ</div>
+        <div>
+          <h2>OM JIN</h2>
+          <small>INTELLIGENCE AI PRO</small>
+        </div>
+      </div>
+
+      <nav class="navigation">
+        <p class="nav-heading">MENU UTAMA</p>
+        <button class="nav-item active" data-page="dashboard">▦ Dashboard</button>
+        <button class="nav-item" data-page="reports">▤ Manajemen Laporan</button>
+        <button class="nav-item" data-page="osint">◎ OSINT Publik</button>
+        <button class="nav-item" data-page="scam">⚑ Analisis Penipuan</button>
+        <button class="nav-item" data-page="location">⌖ Lokasi Perangkat</button>
+        <button class="nav-item" data-page="identity">▣ Data Identitas</button>
+        <button class="nav-item" data-page="forensics">⌕ Forensik File</button>
+
+        <p class="nav-heading">SISTEM</p>
+        <button class="nav-item" data-page="about">ⓘ Tentang Sistem</button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <span class="status-dot"></span>
+        Sistem lokal siap digunakan
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="menu-toggle" id="menuToggle" aria-label="Buka menu">☰</button>
+        <div>
+          <h1 id="pageTitle">Dashboard</h1>
+          <p id="pageSubtitle">Pusat kendali OM JIN Intelligence</p>
+        </div>
+        <div class="system-status">
+          <span class="status-dot"></span>
+          <span>LOCAL MODE</span>
+        </div>
+      </header>
+
+      <section class="page-content">
+        <section class="page active" id="page-dashboard">
+          <div class="welcome-panel">
+            <div>
+              <span class="eyebrow">INTELLIGENCE WORKSPACE</span>
+              <h2>Selamat datang di OM JIN.</h2>
+              <p>Kelola laporan, periksa indikator penipuan, dan dokumentasikan bukti secara terstruktur.</p>
+            </div>
+            <div class="welcome-symbol">OJ</div>
+          </div>
+
+          <div class="stats-grid">
+            <article class="stat-card">
+              <span>Total Laporan</span>
+              <strong id="totalReports">0</strong>
+              <small>Data tersimpan di perangkat</small>
+            </article>
+            <article class="stat-card">
+              <span>Analisis Dilakukan</span>
+              <strong id="totalAnalyses">0</strong>
+              <small>Pemeriksaan lokal</small>
+            </article>
+            <article class="stat-card">
+              <span>Bukti Diperiksa</span>
+              <strong id="totalFiles">0</strong>
+              <small>File yang dianalisis</small>
+            </article>
+          </div>
+
+          <div class="section-heading">
+            <div>
+              <h3>Modul Intelijen</h3>
+              <p>Pilih modul untuk mulai bekerja.</p>
+            </div>
+          </div>
+
+          <div class="module-grid">
+            <button class="module-card" data-page="reports">
+              <span class="module-icon">▤</span>
+              <strong>Manajemen Laporan</strong>
+              <small>Buat dan simpan laporan kejadian.</small>
+            </button>
+            <button class="module-card" data-page="osint">
+              <span class="module-icon">◎</span>
+              <strong>OSINT Publik</strong>
+              <small>Telusuri informasi yang tersedia secara publik.</small>
+            </button>
+            <button class="module-card" data-page="scam">
+              <span class="module-icon">⚑</span>
+              <strong>Analisis Penipuan</strong>
+              <small>Periksa pesan dan indikator mencurigakan.</small>
+            </button>
+            <button class="module-card" data-page="location">
+              <span class="module-icon">⌖</span>
+              <strong>Lokasi Perangkat</strong>
+              <small>Periksa lokasi perangkat dengan izin pengguna.</small>
+            </button>
+            <button class="module-card" data-page="identity">
+              <span class="module-icon">▣</span>
+              <strong>Data Identitas</strong>
+              <small>Catat informasi yang diperoleh secara sah.</small>
+            </button>
+            <button class="module-card" data-page="forensics">
+              <span class="module-icon">⌕</span>
+              <strong>Forensik File</strong>
+              <small>Periksa metadata dasar dan hash file.</small>
+            </button>
+          </div>
+        </section>
+
+        <section class="page" id="page-reports">
+          <div class="section-heading">
+            <div>
+              <h2>Manajemen Laporan</h2>
+              <p>Buat dokumentasi kejadian dan simpan di perangkat ini.</p>
+            </div>
+          </div>
+          <form id="reportForm" class="panel form-grid">
+            <label>Judul laporan
+              <input id="reportTitle" required maxlength="100" placeholder="Contoh: Dugaan penipuan online">
+            </label>
+            <label>Kategori
+              <select id="reportCategory">
+                <option>Penipuan online</option>
+                <option>Ancaman</option>
+                <option>Kehilangan barang</option>
+                <option>Lainnya</option>
+              </select>
+              
+<div class="panel">
+  <h3>Ekspor dan dokumentasi</h3>
+  <p class="helper-text">Ekspor laporan untuk diperiksa, dicetak, atau diserahkan kepada pihak berwenang.</p>
+  <button class="primary-button" id="exportAllReports" type="button">Ekspor Semua Laporan (JSON)</button>
+</div>
+
+            </label>
+            <label class="full-width">Kronologi kejadian
+              <textarea id="reportDescription" required rows="5" placeholder="Tuliskan kejadian berdasarkan fakta..."></textarea>
+            </label>
+            <label class="full-width">Catatan bukti (opsional)
+              <textarea id="reportEvidence" rows="3" placeholder="Nama file, waktu, atau catatan bukti. Jangan masukkan kata sandi."></textarea>
+            </label>
+            <button class="primary-button" type="submit">Simpan Laporan</button>
+          </form>
+          <div class="panel">
+            <h3>Daftar Laporan</h3>
+            <div id="reportList" class="empty-state">Belum ada laporan.</div>
+          </div>
+        </section>
+
+        <section class="page" id="page-osint">
+          <div class="section-heading">
+            <div>
+              <h2>OSINT Publik</h2>
+              <p>Pencarian sumber terbuka. Tidak membuka akun privat atau data tersembunyi.</p>
+            </div>
+          </div>
+          <div class="panel">
+            <label>Kata kunci pencarian
+              <input id="osintQuery" placeholder="Masukkan nama situs, organisasi, atau topik publik">
+            </label>
+            <button class="primary-button" id="osintSearch" type="button">Cari di Web</button>
+            <p class="helper-text">Pencarian akan dibuka melalui mesin pencari. Hasilnya perlu diverifikasi secara manual.</p>
+          </div>
+        </section>
+
+        <section class="page" id="page-scam">
+          <div class="section-heading">
+            <div>
+              <h2>Analisis Penipuan</h2>
+              <p>Periksa pesan berdasarkan indikator risiko umum.</p>
+            </div>
+          </div>
+          <div class="panel">
+            <label>Tempel pesan atau teks yang ingin diperiksa
+              <textarea id="scamText" rows="7" placeholder="Tempel isi pesan di sini..."></textarea>
+            </label>
+            <button class="primary-button" id="scamAnalyze" type="button">Analisis Pesan</button>
+            <div id="scamResult" class="result-area" aria-live="polite">Hasil analisis akan muncul di sini.</div>
+          </div>
+        </section>
+
+        <section class="page" id="page-location">
+          <div class="section-heading">
+            <div>
+              <h2>Lokasi Perangkat</h2>
+              <p>Lokasi hanya diambil dari perangkat yang memberikan izin.</p>
+            </div>
+          </div>
+          <div class="panel">
+            <button class="primary-button" id="getLocation" type="button">Izinkan & Periksa Lokasi Saya</button>
+            <div id="locationResult" class="result-area" aria-live="polite">Belum ada lokasi yang diperiksa.</div>
+            <p class="helper-text">Fitur lokasi memerlukan izin browser dan biasanya harus dijalankan melalui HTTPS atau localhost.</p>
+          </div>
+        </section>
+
+        <section class="page" id="page-identity">
+          <div class="section-heading">
+            <div>
+              <h2>Data Identitas</h2>
+              <p>Catatan internal untuk informasi yang diperoleh secara sah dan diperlukan.</p>
+            </div>
+          </div>
+          <div class="panel warning-panel">
+            Jangan masukkan data identitas orang lain tanpa dasar yang sah. Hindari menyimpan PIN, kata sandi, CVV, atau kode OTP.
+          </div>
+          <form id="identityForm" class="panel form-grid">
+            <label>Nama yang tercantum
+              <input id="identityName" maxlength="100" placeholder="Nama sesuai dokumen">
+            </label>
+            <label>Nomor kontak (opsional)
+              <input id="identityPhone" maxlength="30" placeholder="Nomor yang boleh dicatat">
+            </label>
+            <label>Nomor referensi dokumen (opsional)
+              <input id="identityReference" maxlength="50" placeholder="Gunakan nomor referensi, bukan NIK lengkap">
+            </label>
+            <label>Catatan
+              <input id="identityNotes" maxlength="300" placeholder="Sumber dan alasan pencatatan">
+            </label>
+            <button class="primary-button" type="submit">Simpan Catatan</button>
+          </form>
+          <div class="panel">
+            <h3>Catatan Identitas</h3>
+            <div id="identityList" class="empty-state">Belum ada catatan.</div>
+          </div>
+        </section>
+
+        <section class="page" id="page-forensics">
+          <div class="section-heading">
+            <div>
+              <h2>Forensik File</h2>
+              <p>Periksa ukuran, tipe, dan hash SHA-256 file pilihan.</p>
+            </div>
+          </div>
+          <div class="panel">
+            <label>Pilih file
+              <input type="file" id="forensicFile">
+            </label>
+            <button class="primary-button" id="analyzeFile" type="button">Periksa File</button>
+            <div id="forensicResult" class="result-area" aria-live="polite">Belum ada file diperiksa.</div>
+            <p class="helper-text">Pemeriksaan ini bukan pemindaian antivirus dan tidak membuktikan file aman.</p>
+          </div>
+        </section>
+
+        <section class="page" id="page-about">
+          <div class="panel">
+            <h2>Tentang OM JIN</h2>
+            <p>OM JIN INTELLIGENCE AI PRO adalah ruang kerja lokal untuk dokumentasi, pemeriksaan awal, dan analisis informasi terbuka.</p>
+            <p>Data lokal disimpan di browser perangkat ini. Menghapus data browser dapat menghapus catatan. Jangan gunakan sebagai pengganti layanan darurat, penyidik, atau pemeriksaan forensik profesional.</p>
+            <p><strong>Mode saat ini:</strong> Browser lokal.</p>
+          </div>
+        </section>
+      </section>
+
+      <footer class="app-footer">
+        OM JIN INTELLIGENCE AI PRO <span>•</span> Private Workspace
+      </footer>
+    </main>
+  </div>
+
+  <script src="public/js/app.js" defer></script>
+  <script src="public/js/voice.js" defer></script>
+  <script src="public/js/osint.js" defer></script>
+  <script src="public/js/scam.js" defer></script>
+  <script src="public/js/location.js" defer></script>
+  <script src="public/js/identity.js" defer></script>
+  <script src="public/js/forensics.js" defer></script>
+  <script src="public/js/reports.js" defer></script>
+</body>
+</html>
